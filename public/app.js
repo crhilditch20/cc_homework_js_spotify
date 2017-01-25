@@ -13,12 +13,18 @@ var populateList = function(albums){
   var albumsArray = albums.albums.items;
 
     albumsArray.forEach(function(album){
-      var listItem = document.createElement('li'); 
-      listItem.innerText = album.name; 
-      listItem.value = album.name;
-      albumList.appendChild(listItem); 
+      var eachItem = document.createElement('li');
+      var anchor = document.createElement('a');
+      var link = document.createAttribute('href');
+      link.value = album.uri;
+      console.log(link);
+      anchor.setAttributeNode(link);
+      anchor.innerText = album.name;
+      eachItem.appendChild(anchor);
+      albumList.appendChild(eachItem); 
     });
     div.appendChild(albumList);
+
 }
 
 var requestComplete = function(){
